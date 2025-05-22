@@ -27,7 +27,6 @@ const Icon: React.FC<IconProps> = ({
   const path = svgPaths[iconName];
   console.log(iconName);
   
-  
   if (!path) {
     return null;
   }
