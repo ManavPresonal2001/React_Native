@@ -1,39 +1,34 @@
-import {SvgXml} from 'react-native-svg';
+import { SvgXml } from 'react-native-svg';
 import { colors } from '@constant/colors';
 import { svgPaths } from '@constant/svgPaths';
 
-
 type IconProps = {
-  iconName: keyof typeof svgPaths;
-  height?: number | string;
-  width?: number | string;
-  color?: string;
-  size?: number;
-  fillColor?: string;
-  viewBox?: string;
-  strokeWidth?: string;
+	iconName: keyof typeof svgPaths;
+	height?: number | string;
+	width?: number | string;
+	color?: string;
+	size?: number;
+	fillColor?: string;
+	viewBox?: string;
+	strokeWidth?: string;
 };
 
 const Icon: React.FC<IconProps> = ({
-  iconName,
-  height,
-  width,
-  size = 29,
-  color = colors.tertiary_grey,
-  fillColor = 'none',
-  viewBox = '0 0 32 32',
-  strokeWidth = '1.5',
+	iconName,
+	height,
+	width,
+	size = 29,
+	color = colors.tertiary_grey,
+	fillColor = 'none',
+	viewBox = '0 0 32 32',
+	strokeWidth = '1.5',
 }) => {
-  const path = svgPaths[iconName];
-  console.log(iconName);  console.log(iconName);
-  console.log(iconName);
+	const path = svgPaths[iconName];
+	if (!path) {
+		return null;
+	}
 
-  
-  if (!path) {
-    return null;
-  }
-
-  const svgString = `
+	const svgString = `
     <svg 
       stroke="${color}" 
       width="${width ?? size}"
@@ -49,7 +44,7 @@ const Icon: React.FC<IconProps> = ({
     </svg>
   `;
 
-  return <SvgXml xml={svgString} />;
+	return <SvgXml xml={svgString} />;
 };
 
 export default Icon;
