@@ -1,50 +1,107 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import Icon from '@components/atmos/icon/icon';
-import {colors} from '@constant/colors';
-import {svgPaths} from '@constant/svgPaths';
+import { svgPaths } from '@constant/svgPaths';
+import { responsiveHeight } from '@utility/index';
+import { iconName } from '@constant/iconNames';
 
 interface CardProps {
-  iconName: keyof typeof svgPaths;
+	iconNameA: keyof typeof svgPaths;
 }
 
-const Card: React.FC<CardProps> = ({iconName}) => {
-  return (
-    <View>
-      <View style={styles.filterContainer}></View>
-      <View style={styles.imageContainer}>
-        <Image width={100} height={200} />
-      </View>
-      <View>
-        <Text>700000</Text>
-        <Text>1/201 Puntt Road, Richmond, VIC 3121</Text>
-        <View>
-          <Icon iconName={iconName} />
-          <Text>3</Text>
-        </View>
-        <View>
-          <View>
-            <Text>House</Text>
-          </View>
-          <View>
-            <Icon iconName={iconName} />
-            <Icon iconName={iconName} />
-          </View>
-        </View>
-      </View>
-    </View>
-  );
+const Card: React.FC<CardProps> = ({ iconNameA }) => {
+	return (
+		<>
+			<View style={styles.filterContainer}></View>
+			<View style={styles.cardContainer}>
+				<View style={styles.cardHeader}>
+					<Image></Image>
+					<Text style={styles.headerText}>Julie Taylor</Text>
+					<View style={styles.headerImg}></View>
+				</View>
+				<View style={styles.imageContainer}>
+					<Image width={100} height={200} />
+				</View>
+				<View style={styles.cardContent}>
+					<Text>700000</Text>
+					<Text>1/201 Puntt Road, Richmond, VIC 3121</Text>
+					<View style={styles.houseContent}>
+						<Icon iconName={iconNameA} />
+						<Text>3</Text>
+						<Icon iconName={iconNameA} />
+						<Text>3</Text>
+						<Icon iconName={iconNameA} />
+						<Text>3</Text>
+						<Icon iconName={iconNameA} />
+						<Text>3</Text>
+					</View>
+					<View style={styles.cardFooter}>
+						<View>
+							<Text>House</Text>
+						</View>
+						<View style={styles.footerIcon}>
+							<Icon iconName={iconName.share} />
+							<Icon iconName={iconName.heart} />
+						</View>
+					</View>
+				</View>
+			</View>
+		</>
+	);
 };
 
 export default Card;
 
 const styles = StyleSheet.create({
-  filterContainer: {
-    height: 70,
-    backgroundColor: colors.primary_yellow,
-  },
-  imageContainer: {
-    height: 320,
-    width: '100%',
-    backgroundColor: colors.primary_red,
-  },
+	filterContainer: {
+		height: responsiveHeight(60),
+		backgroundColor: 'white',
+	},
+	cardContainer: {
+		backgroundColor: 'pink',
+		borderBottomColor: 'white',
+		height: responsiveHeight(420),
+	},
+	cardHeader: {
+		height: 40,
+		backgroundColor: '#111E57FF',
+		color: 'white',
+		justifyContent: 'space-around',
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	headerText: {
+		color: 'white',
+		fontSize: 14,
+	},
+	headerImg: {
+		position: 'absolute',
+		height: 65,
+		width: 65,
+		backgroundColor: 'white',
+		alignSelf: 'flex-end',
+		borderRadius: '50%',
+		zIndex: 1,
+		top: 10,
+		right: 10,
+	},
+	imageContainer: {
+		height: responsiveHeight(250),
+		width: '100%',
+		backgroundColor: '#60D4F188',
+	},
+	cardContent: {
+		padding: 20,
+		gap: 8,
+	},
+	houseContent: {
+		flexDirection: 'row',
+	},
+	cardFooter: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+	footerIcon: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
 });

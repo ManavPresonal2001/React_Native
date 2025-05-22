@@ -1,4 +1,6 @@
-import {View} from 'react-native';
+import Container from '@components/atmos/container/container';
+import Card from '@components/molecules/card/card';
+import { iconName } from '@constant/iconNames';
 
 // const url =
 //   'https://view.com.au/api/pubui/mobile/listings/search-result-page/listings-by-location';
@@ -32,34 +34,34 @@ import {View} from 'react-native';
 // };
 
 const List = () => {
-  // const [list, setList] = useState({});
+	// const [list, setList] = useState({});
 
-  // const getData = async () => {
-  //   try {
-  //     const response = await axios.post(url, requestBody, {headers});
-  //     setList(response.data.data.listings);
-  //   } catch (error) {
-  //   }
-  // };
+	// const getData = async () => {
+	//   try {
+	//     const response = await axios.post(url, requestBody, {headers});
+	//     setList(response.data.data.listings);
+	//   } catch (error) {
+	//   }
+	// };
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+	// useEffect(() => {
+	//   getData();
+	// }, []);
 
-  // const renderCardItem = ({item}) => {
-  //   return <Card iconName={iconName.bed} data={item} />;
-  // };
+	// const renderCardItem = ({ item }: { item: object }) => {
+	// 	return <Card iconName={iconName.bed} data={item} />;
+	// };
 
-  return (
-    // <Container>
-    //   <FlatList
-    //     data={list}
-    //     renderItem={renderCardItem}
-    //     keyExtractor={item => item.id.toString()}
-    //   />
-    // </Container>
-    <View></View>
-  );
+	return (
+		<Container>
+			{/* <FlatList
+				data={list}
+				renderItem={renderCardItem}
+				keyExtractor={(item) => item.id.toString()}
+			/> */}
+			<Card iconNameA={iconName.bed} />
+		</Container>
+	);
 };
 
 export default List;
