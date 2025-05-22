@@ -25,6 +25,7 @@ const Icon: React.FC<IconProps> = ({
   strokeWidth = '1.5',
 }) => {
   const path = svgPaths[iconName];
+  
   console.log(iconName);
   
   if (!path) {
