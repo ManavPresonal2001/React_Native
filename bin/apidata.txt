@@ -1,0 +1,18 @@
+curl -X POST
+  -H "accept:application/json, text/plain, */*" 
+  -H "content-type:application/json" 
+  -H "x-rev-apikey:46F42C32-1294-4D13-8B54-EB183BC04FBD" 
+  -H "x-mob-app-version:6.8.2" 
+  -H "User-Agent:avesta-ua" 
+  https://view.com.au/api/pubui/mobile/listings/search-result-page/listings-by-location 
+  -d 
+  '{"saleMethod":["Sale"],
+  "page":1,
+  "includeSurrounding":true,
+  "excludeUnderContract":false,
+  "propertyTypes":[],
+  "exactBeds":false,
+  "exactBaths":false,
+  "exactCars":false,
+  "features":[],
+  "locations":[{"state":"vic","suburbNameSlug":"richmond","suburbName":"RICHMOND","postcode":"3121"}]}'

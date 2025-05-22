@@ -1,0 +1,77 @@
+├── src
+│   ├── api
+│   │  ├── index.js
+│   ├── assets
+│   │  ├── fonts
+│   │  │  ├── font-name1.ttf
+│   │  │  ├── font-name2.ttf
+│   │  ├── images
+│   │  │  ├── icon1.png
+│   │  │  ├── icon2.png
+│   ├── components
+│   │  ├── atoms (Basic building blocks)
+│   │  │  ├── button
+│   │  │  │  ├── index.tsx
+│   │  │  │  ├── styles.js
+│   │  │  ├── textView
+│   │  │  │  ├── index.tsx
+│   │  │  │  ├── styles.js
+│   │  ├── molecules (Composite components - Groups of atoms)
+│   │  │  ├── buttonGroup
+│   │  │  │  ├── index.tsx
+│   │  │  │  ├── styles.js
+│   │  │  ├── searchBar
+│   │  │  │  ├── index.tsx
+│   │  │  │  ├── styles.js
+│   │  ├── organisms (Complex components made of molecules/atoms)
+│   │  │  ├── header
+│   │  │  │  ├── index.tsx
+│   │  │  │  ├── styles.js
+│   │  │  ├── propertyCard
+│   │  │  │  ├── index.tsx
+│   │  │  │  ├── styles.js
+│   │  ├── templates (Page layouts)
+│   │  │  ├── safeareview
+│   │  │  │  ├── index.tsx
+│   │  │  │  ├── styles.js
+│   │  │  ├── scrollView
+│   │  │  │  ├── index.tsx
+│   │  │  │  ├── styles.js
+│   ├── constants
+│   │  │  ├── enums.js
+│   │  │  ├── fonts.js
+│   │  │  ├── images.js
+│   │  │  ├── screenNames.js
+│   │  │  ├── storageKeys.js
+│   │  │  ├── strings.js
+│   │  │  ├── colors.js
+│   ├── hooks
+│   │  │  ├── index.tsx
+│   ├── navigation
+│   │  │  ├── appNavigator.tsx
+│   │  │  ├── authNavigator.tsx
+│   │  │  ├── tabNavigator.tsx
+│   ├── redux
+│   │  ├── actions
+│   │  │  ├── action1.tsx
+│   │  │  ├── action2.tsx
+│   │  ├── constants
+│   │  │  ├── constants1.js
+│   │  │  ├── constants1.js
+│   │  ├── reducers
+│   │  │  ├── reducer1.js
+│   │  │  ├── reducer2.js
+│   │  ├── store.js
+│   ├── pages
+│   │  ├── app
+│   │  │  ├── discover
+│   │  │  ├── more
+│   │  ├── auth
+│   │  │  ├── login
+│   │  │  ├── signup
+│   ├── styles
+│   │  ├── globalStyle.js
+│   ├── utility
+│   │  ├── index.tsx
+├── scripts
+│   ├── generate-component.js

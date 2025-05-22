@@ -1,0 +1,22 @@
+import {svgPaths} from './svgPaths';
+
+export const iconName: Record<string, keyof typeof svgPaths> = {
+  logo: 'logo',
+  search: 'search',
+  heart: 'heart',
+  user: 'user',
+  menu: 'menu',
+  estimate: 'estimate',
+  users: 'users',
+  auction: 'auction',
+  location: 'location',
+  advice: 'advice',
+  news: 'news',
+  homeLoan: 'homeLoan',
+  contactUs: 'contactUs',
+  filters: 'filters',
+  bath: 'bath',
+  bed: 'bed',
+  car: 'car',
+  sqMtr: 'sqMtr',
+};

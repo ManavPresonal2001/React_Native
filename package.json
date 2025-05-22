@@ -1,0 +1,72 @@
+{
+	"name": "ViewTask",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"android": "react-native run-android",
+		"ios": "react-native run-ios",
+		"lint": "eslint .",
+		"start": "react-native start",
+		"test": "jest",
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"@react-navigation/bottom-tabs": "^7.3.13",
+		"@react-navigation/material-top-tabs": "^7.2.13",
+		"@react-navigation/native": "^7.1.9",
+		"axios": "^1.9.0",
+		"install": "^0.13.0",
+		"react": "19.0.0",
+		"react-native": "0.79.2",
+		"react-native-axios": "^0.17.1",
+		"react-native-pager-view": "^6.7.1",
+		"react-native-reanimated": "^3.17.5",
+		"react-native-safe-area-context": "^5.4.0",
+		"react-native-screens": "^4.10.0",
+		"react-native-svg": "^15.12.0",
+		"react-native-svg-transformer": "^1.5.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.3",
+		"@babel/runtime": "^7.25.0",
+		"@eslint/js": "^9.27.0",
+		"@react-native-community/cli": "18.0.0",
+		"@react-native-community/cli-platform-android": "18.0.0",
+		"@react-native-community/cli-platform-ios": "18.0.0",
+		"@react-native/babel-preset": "0.79.2",
+		"@react-native/metro-config": "0.79.2",
+		"@react-native/typescript-config": "0.79.2",
+		"@types/jest": "^29.5.13",
+		"@types/react": "^19.0.0",
+		"@types/react-test-renderer": "^19.0.0",
+		"@typescript-eslint/eslint-plugin": "^8.32.1",
+		"@typescript-eslint/parser": "^8.32.1",
+		"babel-plugin-module-resolver": "^5.0.2",
+		"eslint": "^8.57.1",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-import-resolver-typescript": "^4.3.5",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^4.6.2",
+		"eslint-plugin-react-native": "^5.0.0",
+		"globals": "^16.1.0",
+		"husky": "^8.0.0",
+		"jest": "^29.6.3",
+		"prettier": "2.8.8",
+		"react-test-renderer": "19.0.0",
+		"typescript": "^5.8.3",
+		"typescript-eslint": "^8.32.1"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"node remove_console.js",
+			"prettier --write",
+			"eslint --fix"
+		]
+	},
+	"engines": {
+		"node": ">=18"
+	}
+}
