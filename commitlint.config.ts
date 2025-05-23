@@ -6,7 +6,7 @@ const Configuration = {
 		'type-colon-space': [2, 'always'],
 		'subject-case': [2, 'always', ['sentence-case']],
 	},
-	//check
+	//check commit
 };
 
 module.exports = Configuration;
