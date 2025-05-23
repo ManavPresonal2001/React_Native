@@ -9,7 +9,19 @@ const Configuration = {
 
 		'subject-case': [2, 'always', ['sentence-case']],
 	},
-	//check commit check again
+	plugins: [
+		{
+			rules: {
+				'type-colon-space': ({ raw }: { raw: string }) => {
+					const match = /^([A-Z][a-z]+):\s/.test(raw);
+					return [
+						match,
+						'type must be PascalCase, immediately followed by colon, and one space after colon',
+					];
+				},
+			},
+		},
+	],
 };
 
 module.exports = Configuration;
