@@ -8,18 +8,23 @@ interface CardProps {
 	iconNameA: keyof typeof svgPaths;
 }
 
-const Card: React.FC<CardProps> = ({ iconNameA }) => {
+interface CardProps {
+	iconNameA: keyof typeof svgPaths;
+	heroImg: string;
+}
+
+const Card: React.FC<CardProps> = ({ iconNameA, heroImg }) => {
 	return (
 		<>
 			<View style={styles.filterContainer}></View>
 			<View style={styles.cardContainer}>
 				<View style={styles.cardHeader}>
-					<Image></Image>
+					<Image />
 					<Text style={styles.headerText}>Julie Taylor</Text>
 					<View style={styles.headerImg}></View>
 				</View>
 				<View style={styles.imageContainer}>
-					<Image width={100} height={200} />
+					<Image source={{ uri: heroImg }} style={styles.heroImage} />
 				</View>
 				<View style={styles.cardContent}>
 					<Text>700000</Text>
@@ -103,5 +108,9 @@ const styles = StyleSheet.create({
 	footerIcon: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+	},
+	heroImage: {
+		width: 100,
+		height: 100,
 	},
 });
