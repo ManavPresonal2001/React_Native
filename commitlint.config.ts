@@ -1,4 +1,5 @@
 /** @type {import('@commitlint/types').UserConfig} */
+
 const Configuration = {
 	rules: {
 		'type-enum': [2, 'always', ['Feat', 'Fix', 'Chore']],
