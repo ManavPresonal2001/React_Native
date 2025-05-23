@@ -1,9 +1,10 @@
 import Container from '@components/atmos/container/container';
 import Card from '@components/molecules/card/card';
-import { iconName } from '@constant/iconNames';
+import { colors } from '@constant/colors';
+import { responsiveHeight } from '@utility/index';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Alert, FlatList } from 'react-native';
+import { Alert, FlatList, StyleSheet, View } from 'react-native';
 
 type ListingItem = {
 	id: number;
@@ -57,19 +58,36 @@ const List = () => {
 	}, []);
 
 	const renderCardItem = ({ item }: { item: ListingItem }) => {
-		return <Card iconNameA={iconName.bed} heroImg={item.heroImageUrl} />;
+		return (
+			<Card
+				heroImg={item.heroImageUrl}
+				agencyImg={item.agency.logoFileName}
+				headerBgColor={item.agency.brandColour}
+			/>
+		);
 	};
 
 	return (
-		<Container>
+		<Container style={styles.containerStyle}>
+			<View style={styles.filterContainer}></View>
+
 			<FlatList
 				data={list}
 				renderItem={renderCardItem}
 				keyExtractor={(item) => item.id.toString()}
 			/>
-			{/* <Card iconNameA={iconName.bed} /> */}
 		</Container>
 	);
 };
 
 export default List;
+
+const styles = StyleSheet.create({
+	filterContainer: {
+		height: responsiveHeight(60),
+		backgroundColor: 'white',
+	},
+	containerStyle: {
+		backgroundColor: colors.primary_grey,
+	},
+});

@@ -22,7 +22,7 @@ const BottomTab = () => {
 				tabBarInactiveTintColor: colors.tertiary_grey,
 				tabBarStyle: {
 					elevation: 0,
-					height: '9.5%',
+					height: '9.2%',
 				},
 				tabBarIconStyle: {
 					marginTop: 10,
