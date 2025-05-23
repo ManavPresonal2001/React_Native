@@ -6,7 +6,6 @@ const Configuration = {
 		'type-case': [2, 'always', 'pascal-case'],
 
 		// 'type-colon-space': [2, 'always'],
-
 		'subject-case': [2, 'always', ['sentence-case']],
 	},
 };
