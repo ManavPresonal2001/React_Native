@@ -13,7 +13,7 @@ interface CardProps {
 	heroImg: string;
 }
 
-const Card: React.FC<CardProps> = ({ iconNameA, heroImg }) => {
+const Card: React.FC<CardProps> = ({ heroImg }) => {
 	return (
 		<>
 			<View style={styles.filterContainer}></View>
@@ -29,16 +29,24 @@ const Card: React.FC<CardProps> = ({ iconNameA, heroImg }) => {
 				<View style={styles.cardContent}>
 					<Text>700000</Text>
 					<Text>1/201 Puntt Road, Richmond, VIC 3121</Text>
-					<View style={styles.houseContent}>
-						<Icon iconName={iconNameA} />
-						<Text>3</Text>
-						<Icon iconName={iconNameA} />
-						<Text>3</Text>
-						<Icon iconName={iconNameA} />
-						<Text>3</Text>
-						<Icon iconName={iconNameA} />
-						<Text>3</Text>
-					</View>
+					{/* <View style={styles.houseContent}>
+						<View>
+							<Icon iconName={iconName.bed} />
+							<Text>3</Text>
+						</View>
+						<View>
+							<Icon iconName={iconName.bath} />
+							<Text>3</Text>
+						</View>
+						<View>
+							<Icon iconName={iconName.car} />
+							<Text>3</Text>
+						</View>
+						<View>
+							<Icon iconName={iconName.sqMtr} />
+							<Text>3</Text>
+						</View>
+					</View> */}
 					<View style={styles.cardFooter}>
 						<View>
 							<Text>House</Text>
