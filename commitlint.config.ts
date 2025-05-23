@@ -24,4 +24,6 @@ const Configuration = {
 	],
 };
 
+//check commit
+
 module.exports = Configuration;
