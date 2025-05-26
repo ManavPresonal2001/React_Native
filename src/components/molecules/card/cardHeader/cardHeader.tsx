@@ -1,21 +1,43 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { responsiveHeight, responsiveWidth } from '@utility/index';
+import { colors } from '@constant/colors';
 
-interface CardHeader {
+interface CardHeaderProps {
 	headerImg: string;
 	headerBgColor: string;
+	agentImg: string;
+	agentName: {
+		firstName: string;
+		lastName: string;
+	};
 }
 
-const CardHeader: React.FC<CardHeader> = ({ headerImg, headerBgColor }) => {
+const CardHeader: React.FC<CardHeaderProps> = ({
+	headerImg,
+	headerBgColor,
+	agentName,
+	agentImg,
+}) => {
 	const headerStyle = { backgroundColor: `#${headerBgColor}` };
+	const { firstName, lastName } = agentName;
 
 	return (
 		<View style={[styles.cardHeader, headerStyle]}>
-			<View style={{ alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+			<View style={styles.headerLeftbar}>
 				<Image source={{ uri: headerImg }} style={styles.agencyImg} />
 			</View>
-			<Text style={styles.headerText}>Julie Taylor</Text>
-			<View style={styles.headerImg}></View>
+			<View style={styles.headerRightbar}>
+				<Text style={styles.headerText}>
+					{firstName} {lastName}
+				</Text>
+			</View>
+			<View style={styles.agentImage}>
+				<ImageBackground
+					source={{ uri: agentImg }}
+					resizeMode='cover'
+					style={styles.imgStyles}
+				></ImageBackground>
+			</View>
 		</View>
 	);
 };
@@ -23,31 +45,48 @@ const CardHeader: React.FC<CardHeader> = ({ headerImg, headerBgColor }) => {
 export default CardHeader;
 
 const styles = StyleSheet.create({
+	imgStyles: {
+		flex: 1,
+		justifyContent: 'center',
+	},
 	cardHeader: {
 		height: 40,
-		// backgroundColor: '#111E57FF',
-		color: 'white',
-		justifyContent: 'space-around',
 		flexDirection: 'row',
 		alignItems: 'center',
+		justifyContent: 'space-around',
+		color: colors.primary_white,
+		paddingHorizontal: 20,
+		paddingRight: 85,
+		borderBottomWidth: 1,
+		borderBottomColor: colors.primary_white,
+	},
+	headerLeftbar: {
+		width: '30%',
+	},
+	headerRightbar: {
+		width: '70%',
 	},
 	headerText: {
 		color: 'white',
 		fontSize: 14,
+		textAlign: 'right',
 	},
-	headerImg: {
-		position: 'absolute',
+	agentImage: {
 		height: 65,
 		width: 65,
-		backgroundColor: 'white',
 		alignSelf: 'flex-end',
+		backgroundColor: 'white',
 		borderRadius: '50%',
+		borderWidth: 1,
+		borderColor: colors.primary_white,
+		position: 'absolute',
 		zIndex: 1,
 		top: 10,
 		right: 10,
+		overflow: 'hidden',
 	},
 	agencyImg: {
 		width: responsiveWidth(100),
-		height: responsiveHeight(20),
+		height: responsiveHeight(15),
 	},
 });

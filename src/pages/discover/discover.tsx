@@ -13,7 +13,7 @@ const Discover = () => {
 		<Container>
 			<View style={styles.headerContainer}>
 				<View style={styles.searchContainer}>
-					<Icon iconName={iconName.menu} size={25} color={colors.primary_black} />
+					<Icon iconName={iconName.leftArrow} size={35} color={colors.primary_black} />
 					<SearchBar
 						placeholder='Search suburb, school or street'
 						iconName={iconName.search}
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 	searchContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		gap: 10,
+		gap: 5,
 	},
 	buttonContainer: {
 		flexDirection: 'row',

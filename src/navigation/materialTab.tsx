@@ -1,4 +1,5 @@
 import { colors } from '@constant/colors';
+import { fonts } from '@constant/fontsName';
 import Auction from '@pages/auction/auction';
 import Inspections from '@pages/inspections/inspections';
 import List from '@pages/list/list';
@@ -22,6 +23,7 @@ function Tabs() {
 					fontSize: responsiveFontSize(14),
 					fontWeight: '600',
 					textTransform: 'none',
+					fontFamily: fonts.dmSansMedium,
 				},
 				tabBarActiveTintColor: colors.primary_blue,
 				tabBarInactiveTintColor: colors.primary_black,
@@ -32,7 +34,7 @@ function Tabs() {
 			}}
 		>
 			<Tab.Screen name='List' component={List} />
-			<Tab.Screen name='inspections' component={Inspections} />
+			<Tab.Screen name='Inspections' component={Inspections} />
 			<Tab.Screen name='Auction' component={Auction} />
 		</Tab.Navigator>
 	);

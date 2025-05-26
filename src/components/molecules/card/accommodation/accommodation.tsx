@@ -2,24 +2,36 @@ import { StyleSheet, Text, View } from 'react-native';
 import { iconName } from '@constant/iconNames';
 import Icon from '@components/atmos/icon/icon';
 
-const Accommodation = () => {
+interface AccommodationProps {
+	bathrooms: number;
+	bedrooms: number;
+	carparks: number;
+	landSize: number;
+}
+
+const Accommodation: React.FC<AccommodationProps> = ({
+	bathrooms,
+	bedrooms,
+	carparks,
+	landSize,
+}) => {
 	return (
 		<View style={styles.accommodation_Container}>
 			<View style={styles.accommodation_Content}>
 				<Icon iconName={iconName.bed} size={27} />
-				<Text>3</Text>
+				<Text>{bedrooms}</Text>
 			</View>
 			<View style={styles.accommodation_Content}>
 				<Icon iconName={iconName.bath} size={27} />
-				<Text>2</Text>
+				<Text>{bathrooms}</Text>
 			</View>
 			<View style={styles.accommodation_Content}>
 				<Icon iconName={iconName.car} size={27} />
-				<Text>1</Text>
+				<Text>{carparks}</Text>
 			</View>
 			<View style={styles.accommodation_Content}>
 				<Icon iconName={iconName.sqMtr} size={27} />
-				<Text>500 m</Text>
+				<Text>{landSize} m²</Text>
 			</View>
 		</View>
 	);
@@ -32,7 +44,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		gap: 8,
-		// backgroundColor: 'pink',
 	},
 	accommodation_Content: {
 		flexDirection: 'row',

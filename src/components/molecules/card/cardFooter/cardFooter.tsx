@@ -4,10 +4,14 @@ import Badge from '@components/atmos/badge/badge';
 import Icon from '@components/atmos/icon/icon';
 import { iconName } from '@constant/iconNames';
 
-const CardFooter = () => {
+interface CardFooterProps {
+	primaryPropertyType: string;
+}
+
+const CardFooter: React.FC<CardFooterProps> = ({ primaryPropertyType }) => {
 	return (
 		<View style={styles.footerContainer}>
-			<Badge bagdeText='House' />
+			<Badge bagdeText={primaryPropertyType} />
 
 			<View style={styles.footerIcon}>
 				<Icon iconName={iconName.share} />
@@ -24,7 +28,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		// backgroundColor: 'pink',
 	},
 
 	footerIcon: {

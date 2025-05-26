@@ -1,27 +1,41 @@
-import { responsiveHeight } from '@utility/index';
-import { Image, StyleSheet, View } from 'react-native';
+import { FlatList, Image, StyleSheet, View } from 'react-native';
+import { responsiveHeight, responsiveWidth } from '@utility/index';
+import { colors } from '@constant/colors';
 
-interface CardImages {
-	headerImg: string;
+interface HeroImage {
+	url: string;
 }
-const CardImages: React.FC<CardImages> = ({ headerImg }) => {
+
+interface CardImagesProps {
+	heroImages: HeroImage[];
+}
+const CardImages: React.FC<CardImagesProps> = ({ heroImages }) => {
+	const renderHeroImages = ({ item }: { item: HeroImage }) => {
+		const IMAGE = `https://resi.uatz.view.com.au/viewstatic/images/listing/750-min/${item.url}`;
+		return <Image source={{ uri: IMAGE }} style={styles.heroImage} />;
+	};
+
 	return (
 		<View style={styles.imageContainer}>
-			<Image source={{ uri: headerImg }} style={styles.heroImage} />
+			<FlatList
+				data={heroImages}
+				renderItem={renderHeroImages}
+				keyExtractor={(item) => item.url.toString()}
+				horizontal
+			/>
 		</View>
 	);
 };
-
 export default CardImages;
 
 const styles = StyleSheet.create({
 	imageContainer: {
 		height: responsiveHeight(250),
 		width: '100%',
-		backgroundColor: '#60D4F188',
+		backgroundColor: colors.secondary_grey,
 	},
 	heroImage: {
-		width: '100%',
+		width: responsiveWidth(375),
 		height: '100%',
 	},
 });

@@ -2,6 +2,7 @@ import { svgPaths } from './svgPaths';
 
 export const iconName: Record<string, keyof typeof svgPaths> = {
 	logo: 'logo',
+	leftArrow: 'leftArrow',
 	search: 'search',
 	heart: 'heart',
 	user: 'user',
