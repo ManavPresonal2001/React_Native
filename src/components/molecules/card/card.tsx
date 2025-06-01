@@ -6,32 +6,9 @@ import CardHeader from './cardHeader/cardHeader';
 import CardImages from './cardImages/cardImages';
 import { fonts } from '@constant/fontsName';
 import { colors } from '@constant/colors';
+import { cardProps } from '@utility/types';
 
-interface HeroImage {
-	url: string;
-}
-
-interface CardProps {
-	heroImages: HeroImage[];
-	agencyImg: string;
-	brandColour: string;
-	agentImg: string;
-	agentName: { firstName: string; lastName: string };
-	priceText: number;
-	unitNumber: string;
-	streetNumber: string;
-	streetName: string;
-	suburbName: string;
-	state: string;
-	postcode: string;
-	bathrooms: number;
-	bedrooms: number;
-	carparks: number;
-	landSize: number;
-	primaryPropertyType: string;
-}
-
-const Card: React.FC<CardProps> = ({
+const Card: React.FC<cardProps> = ({
 	agentName,
 	heroImages,
 	agencyImg,

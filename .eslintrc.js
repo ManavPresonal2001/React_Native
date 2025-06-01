@@ -10,7 +10,9 @@ module.exports = {
 	},
 	rules: {
 		'no-console': ['error'],
-		'@typescript-eslint/no-require-imports': 'off',
 		'no-warning-comments': ['error', { terms: ['console'], location: 'start' }],
+		'@typescript-eslint/no-require-imports': 'off',
+		'react-native/sort-styles': 'off',
+		'react-native/no-inline-styles': 'off',
 	},
 };

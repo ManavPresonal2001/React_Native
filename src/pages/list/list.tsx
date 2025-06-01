@@ -1,48 +1,19 @@
-import { Alert, FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { colors } from '@constant/colors';
 import { responsiveHeight } from '@utility/index';
 import Container from '@components/atmos/container/container';
 import Card from '@components/molecules/card/card';
+import { ListingItem } from '@utility/types';
+import { post } from '@utility/httpServices';
+import Error from '@components/molecules/error/error';
+import SkeletonLoader from '@components/molecules/skeletonLoader/loader';
 
-interface HeroImage {
-	url: string;
-}
-
-type ListingItem = {
-	id: number;
-	heroImageUrl: string;
-	agency: {
-		logoFileName: string;
-		brandColour: string;
-	};
-	agents: {
-		agentPhotoFileName: string;
-		firstName: string;
-		lastName: string;
-	}[];
-	images: HeroImage[];
-	priceText: number;
-	unitNumber: string;
-	streetNumber: string;
-	streetName: string;
-	suburbName: string;
-	state: string;
-	postcode: string;
-	bathrooms: number;
-	bedrooms: number;
-	carparks: number;
-	landSize: number;
-	primaryPropertyType: string;
-};
-
-const url =
-	'https://resi.uatz.view.com.au/api/pubui/mobile/listings/search-result-page/listings-by-location';
+const endpoint = '/api/pubui/mobile/listings/search-result-page/listings-by-location';
 
 const headers = {
-	accept: 'application/json, text/plain,*/*',
-	'content-type': 'application/json',
+	Accept: 'application/json, text/plain,*/*',
+	'Content-Type': 'application/json',
 	'x-rev-apikey': '46F42C32-1294-4D13-8B54-EB183BC04FBD',
 	'x-mob-app-version': '6.8.2',
 	'User-Agent': 'avesta-ua',
@@ -66,18 +37,28 @@ const requestBody = {
 			postcode: '3121',
 		},
 	],
-	sort: 'recommended',
 };
 
-const List = () => {
-	const [list, setList] = useState<[]>([]);
+interface ListingsResponse {
+	data: {
+		listings: ListingItem[];
+	};
+}
+
+const List: React.FC<ListingItem> = () => {
+	const [list, setList] = useState<ListingItem[]>([]);
+	const [error, setError] = useState<string | null>(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const getList = async () => {
+		setIsLoading(true);
 		try {
-			const response = await axios.post(url, requestBody, { headers });
-			setList(response.data.data.listings);
-		} catch (error) {
-			Alert.alert('Error', 'Failed to fetch data', error.message);
+			const response = await post<ListingsResponse>(endpoint, requestBody, headers);
+			setList(response.data.listings);
+		} catch (error: unknown) {
+			setError(`somthing went wrong! ${error}`);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
@@ -85,9 +66,11 @@ const List = () => {
 		getList();
 	}, []);
 
-	// unitNumber/streetNumber streetName, suburbName, state postcode
-
 	const renderCardItem = ({ item }: { item: ListingItem }) => {
+		if (isLoading) {
+			return <SkeletonLoader />;
+		}
+
 		return (
 			item.agency && (
 				<Card
@@ -115,13 +98,22 @@ const List = () => {
 
 	return (
 		<Container style={styles.containerStyle}>
-			<View style={styles.filterContainer}></View>
-
-			<FlatList
-				data={list}
-				renderItem={renderCardItem}
-				keyExtractor={(item) => item.id.toString()}
-			/>
+			{isLoading ? (
+				<>
+					<SkeletonLoader />
+					<SkeletonLoader />
+					<SkeletonLoader />
+				</>
+			) : error ? (
+				<Error message={error} />
+			) : (
+				<FlatList
+					data={list}
+					renderItem={renderCardItem}
+					keyExtractor={(item) => item.id.toString()}
+					ListHeaderComponent={<View style={styles.filterContainer} />}
+				/>
+			)}
 		</Container>
 	);
 };
@@ -135,5 +127,11 @@ const styles = StyleSheet.create({
 	},
 	containerStyle: {
 		backgroundColor: colors.primary_grey,
+	},
+	errorContainer: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginTop: 20,
 	},
 });

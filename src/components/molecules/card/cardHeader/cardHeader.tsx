@@ -1,16 +1,7 @@
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { responsiveHeight, responsiveWidth } from '@utility/index';
 import { colors } from '@constant/colors';
-
-interface CardHeaderProps {
-	headerImg: string;
-	headerBgColor: string;
-	agentImg: string;
-	agentName: {
-		firstName: string;
-		lastName: string;
-	};
-}
+import { CardHeaderProps } from '@utility/types';
 
 const CardHeader: React.FC<CardHeaderProps> = ({
 	headerImg,
@@ -67,7 +58,7 @@ const styles = StyleSheet.create({
 		width: '70%',
 	},
 	headerText: {
-		color: 'white',
+		color: colors.primary_white,
 		fontSize: 14,
 		textAlign: 'right',
 	},
@@ -75,7 +66,7 @@ const styles = StyleSheet.create({
 		height: 65,
 		width: 65,
 		alignSelf: 'flex-end',
-		backgroundColor: 'white',
+		backgroundColor: colors.primary_white,
 		borderRadius: '50%',
 		borderWidth: 1,
 		borderColor: colors.primary_white,

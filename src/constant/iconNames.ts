@@ -3,6 +3,8 @@ import { svgPaths } from './svgPaths';
 export const iconName: Record<string, keyof typeof svgPaths> = {
 	logo: 'logo',
 	leftArrow: 'leftArrow',
+	plus: 'plus',
+	cross: 'cross',
 	search: 'search',
 	heart: 'heart',
 	user: 'user',

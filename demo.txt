@@ -1,0 +1,58 @@
+const handelSearch = async (text: string) => {
+	if (text.length < 3) {
+		setSearchResults([]);
+		return;
+	}
+	try {
+		const requestBody = {
+			searchText: text,
+			scope: {
+				excludeLocations: false,
+				excludeStreets: false,
+				excludeProperties: true,
+				excludeProject: false,
+				excludeSchool: false,
+				locationScope: {
+					excludeState: false,
+					excludeCity: false,
+					excludeLga: false,
+					excludeRegion: false,
+				},
+			},
+		};
+
+		const response = await post<SuburbResponse>(endpoint, requestBody, headers);
+		const rawData = response.data;
+
+		// Group by locationType
+		const groupedResults: { [key: string]: suburbData[] } = {};
+		rawData.forEach((item) => {
+			const type = item.locationType || 'Other';
+			if (!groupedResults[type]) {
+				groupedResults[type] = [];
+			}
+			groupedResults[type].push(item);
+		});
+
+		// Format as section list data
+		const sectionData = Object.keys(groupedResults).map((key) => ({
+			title: key,
+			data: groupedResults[key],
+		}));
+
+		setSearchResults(sectionData);
+	} catch (error) {
+		console.log(error);
+	}
+};
+const [searchResults, setSearchResults] = useState<
+  { title: string; data: suburbData[] }[]
+>([]);
+<SectionList
+	sections={searchResults}
+	keyExtractor={(item, index) => `${item._id}+${index}`}
+	renderItem={renderSearchList}
+	renderSectionHeader={({ section }) => (
+		<Text style={styles.sectionText}>{section.title}</Text>
+	)}
+/>

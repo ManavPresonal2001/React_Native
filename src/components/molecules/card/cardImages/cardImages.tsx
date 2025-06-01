@@ -1,15 +1,9 @@
 import { FlatList, Image, StyleSheet, View } from 'react-native';
 import { responsiveHeight, responsiveWidth } from '@utility/index';
 import { colors } from '@constant/colors';
+import { HeroImage } from '@utility/types';
 
-interface HeroImage {
-	url: string;
-}
-
-interface CardImagesProps {
-	heroImages: HeroImage[];
-}
-const CardImages: React.FC<CardImagesProps> = ({ heroImages }) => {
+const CardImages: React.FC<{ heroImages: HeroImage[] }> = ({ heroImages }) => {
 	const renderHeroImages = ({ item }: { item: HeroImage }) => {
 		const IMAGE = `https://resi.uatz.view.com.au/viewstatic/images/listing/750-min/${item.url}`;
 		return <Image source={{ uri: IMAGE }} style={styles.heroImage} />;
